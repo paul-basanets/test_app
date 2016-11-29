@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog index</title>
-</head>
-<body>
-<h3>{{post.title}}</h3>
-<p>
-    {{post.content|linebreaks}}
-</p>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block TITLE %}Post:  {{ post.title }}{% endblock %}
+
+{% block CONTENT %}
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+                <h1>{{ post.title }}</h1>
+                <span class="meta">Posted by <a href="#">Posted by <a href="#">User</a> on {{ post.cdate|date:"d.m.y H:i" }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            {{ post.content|linebreaks }}
+        </div>
+    </div>
+{% endblock %}

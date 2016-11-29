@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog index</title>
-</head>
-<body>
-<ul>
-    {% for post in posts %}
-    <li>
-        <a href="{% url 'blog_read_post' post.id %}">{{ post.title }}</a>
-    </li>
-    {% endfor %}
-</ul>
+{% extends 'base.html' %}
+{% block TITLE %}Blog index{% endblock %}
 
-{{cur_time}}
-</body>
-</html>
+{% block CONTENT %}
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {% for post in posts %}
+            <div class="post-preview">
+                <a href="{% url 'blog_read_post' post.id %}">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <h3 class="post-subtitle">{{ post.content|truncatewords:5 }}</h3>
+                </a>
+                <p class="post-meta">Posted by <a href="#">User</a> on {{ post.cdate|date:"d.m.y H:i" }}</p>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}
