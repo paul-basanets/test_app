@@ -22,7 +22,7 @@ from rest.api_router import router
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls')),
-    url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='user_login'),
-    url(r'^logout/$', auth_views.logout, name='user_logout'),
+    url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='user_login'),
+    url(r'^logout/$', auth_views.LogoutView.as_view(), name='user_logout'),
     url(r'rest/', include(router.urls))
 ]

@@ -5,7 +5,7 @@ def ip_track(get_response):
     def middleware(request):
         # Code to be executed for each request before
         # the view (and later middleware) are called.
-        print request.META['REMOTE_ADDR']
+        print(request.META['REMOTE_ADDR'])
         response = get_response(request)
 
         # Code to be executed for each request/response after

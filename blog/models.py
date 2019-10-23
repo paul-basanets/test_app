@@ -15,7 +15,7 @@ class Post(models.Model):
     cdate = models.DateTimeField(auto_now_add=True)
     # auto_now = True - дата будет установлена при редактировании объекта
     edate = models.DateTimeField(auto_now=True)
-    topic = models.ForeignKey(Topic, related_name='posts', blank=True, null=True)
+    topic = models.ForeignKey(Topic, related_name='posts', blank=True, null=True, on_delete=models.CASCADE)
 
     def __unicode__(self):
         return self.title
